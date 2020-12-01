@@ -2,7 +2,7 @@ public class Spike {
   private int x, y, size, vx, vy;
   
   public Spike(int cwidth, int cheight) {
-    this.x = (int) random(cwiodth);
+    this.x = (int) random(cwidth);
     this.y = (int) random(cheight);
     this.size = 15;
     this.vx = (int) random(-7,7);
@@ -25,6 +25,12 @@ public class Spike {
     }
     if (x < 0 || x > cwidth) {
       vx*= -1;
+    }
+  }
+  
+  public void spikeVsBalloon (Balloon balloon) {
+    if (dist(x,y,balloon.getX(),balloon.getY()) <= (size/2 + balloon.getSize()/2)) {
+      balloon.pop();
     }
   }
 }
